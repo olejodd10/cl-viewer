@@ -6,7 +6,6 @@ import Data.Time.Clock
 import Control.Concurrent
 import Graphics.Image hiding (map)
 import Graphics.Image.ColorSpace (toWord8I)
-import Data.Char (chr)
 
 printImage :: FilePath -> (Int, Int) -> IO ()
 printImage path maxDims = do
@@ -37,4 +36,6 @@ main :: IO ()
 main = do
     path <- fmap head getArgs
     termDims <- terminalDims
-    displayGif path termDims
+    let extension = '.' : (reverse $ takeWhile (/='.') $ reverse path)
+    let displayMethod = if isFormat extension GIF then displayGif else printImage
+    displayMethod path termDims
