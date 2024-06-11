@@ -19,7 +19,7 @@ executable cl-viewer
   main-is:             Main.hs
   other-modules:       Size, Ansi, Rgb
   -- other-extensions:
-  build-depends:       base >=4.12 && <4.13, 
+  build-depends:       base >=4.12, 
                        hip >=1.5.6.0,
                        terminal-size >=0.3.3,
                        time
